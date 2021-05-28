@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{ useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,13 +13,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import MenuIcon from '@material-ui/icons/Menu';
 import AddIcon from '@material-ui/icons/Add';
-import SearchIcon from '@material-ui/icons/Search';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import {messages} from './Data';
 import { useHistory } from "react-router-dom";
-
+import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   text: {
     padding: theme.spacing(2, 2, 0),
@@ -48,21 +45,29 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     margin: '0 auto',
   },
-}));
+})); 
 
 export default function Content() {
-
-  const [checked,setChecked] = useState(messages.statusmg);
+  // const [data,setData] = useState([])
+  // useEffect(() => {
+  //   axios
+  //     .get("https://fetest.morabaaapps.com/api/v1/todos")
+  //     .then(result => setData(result.data))
+  //     .catch((error)=>{
+  //       console.log(error);
+  //     });
+  // }, []);
+  // console.log(data)
+  const [checked] = useState(messages.statusmg);
   const classes = useStyles();
   const history = useHistory();
   const signOutHandel = ()=>{
     history.push("/"); 
-
   }
   const createNewHandel = ()=>{
     history.push("/createnew"); 
-
   }
+
   return (
     <div className="container">
 
